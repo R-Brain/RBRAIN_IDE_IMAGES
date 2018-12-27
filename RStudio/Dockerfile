@@ -16,6 +16,7 @@ RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     file \
     git \
+    zlib1g-dev \
     libapparmor1 \
     libcurl4-openssl-dev \
     libedit2 \
@@ -73,9 +74,17 @@ RUN apt-get update \
   && git config --system credential.helper 'cache --timeout=3600' \
   && git config --system push.default simple 
 
+COPY install_packages.R /home/rstudio/install_packages.R 
+COPY installUtils.R /home/rstudio/installUtils.R
+
+RUN Rscript /home/rstudio/install_packages.R \
+  && rm /home/rstudio/install_packages.R \
+  && rm /home/rstudio/installUtils.R
+
 COPY ride-proxy /etc/nginx/sites-available/
 RUN ln -s /etc/nginx/sites-available/ride-proxy /etc/nginx/sites-enabled/ride-proxy
 COPY  rserver.conf /etc/rstudio/rserver.conf  
+COPY rsession.conf /etc/rstudio/rsession.conf
 COPY prepare_start.sh /home/rstudio/prepare_start.sh
 COPY nginx.conf /etc/nginx/nginx.conf
 
