@@ -119,6 +119,7 @@ EXPOSE 8888
 # USER rstudio
 ENV USER=rstudio
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY supervisord_shiny.conf /etc/supervisor/conf.d/supervisord_shiny.conf
 ENTRYPOINT ["/usr/bin/supervisord"]
 
 # start container. See 'supervisord.conf'.
