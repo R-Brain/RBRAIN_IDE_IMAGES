@@ -5,6 +5,7 @@ ARG RSTUDIO_VERSION
 ARG S6_VERSION
 ENV S6_VERSION=${S6_VERSION:-v1.21.7.0}
 ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=2
+ENV CONDA_DIR=/opt/conda
 
 
 ENV PATH=/usr/lib/rstudio-server/bin:$PATH
@@ -22,6 +23,7 @@ RUN apt-get update \
     libedit2 \
     libssl-dev \
     lsb-release \
+    bzip2 \
     psmisc \
     procps \
     python-setuptools \
@@ -74,6 +76,30 @@ RUN apt-get update \
   && git config --system credential.helper 'cache --timeout=3600' \
   && git config --system push.default simple 
 
+
+RUN mkdir -p $CONDA_DIR && \
+    chown -R rstudio:rstudio $CONDA_DIR
+
+ENV PATH=$CONDA_DIR/bin:$PATH
+
+ENV MINICONDA_VERSION 4.5.11
+RUN cd /tmp && \
+    wget --quiet https://repo.continuum.io/miniconda/Miniconda3-${MINICONDA_VERSION}-Linux-x86_64.sh && \
+    echo "e1045ee415162f944b6aebfe560b8fee *Miniconda3-${MINICONDA_VERSION}-Linux-x86_64.sh" | md5sum -c - && \
+    /bin/bash Miniconda3-${MINICONDA_VERSION}-Linux-x86_64.sh -f -b -p $CONDA_DIR && \
+    rm Miniconda3-${MINICONDA_VERSION}-Linux-x86_64.sh && \
+    $CONDA_DIR/bin/conda config --system --prepend channels conda-forge && \
+    $CONDA_DIR/bin/conda config --system --set auto_update_conda false && \
+    $CONDA_DIR/bin/conda config --system --set show_channel_urls true && \
+    $CONDA_DIR/bin/conda install --quiet --yes conda="${MINICONDA_VERSION%.*}.*" && \
+    $CONDA_DIR/bin/conda update --all --quiet --yes && \
+    conda clean -tipsy && \
+    rm -rf /home/rstudio/.cache/yarn 
+
+
+
+
+
 COPY install_packages.R /home/rstudio/install_packages.R 
 COPY installUtils.R /home/rstudio/installUtils.R
 
@@ -102,6 +128,9 @@ RUN mkdir -p /home/rstudio/supervisor /home/rstudio/logs/supervisor
 COPY add_shiny.sh /etc/cont-init.d/add
 COPY disable_auth_rserver.conf /etc/rstudio/disable_auth_rserver.conf
 COPY pam-helper.sh /usr/lib/rstudio-server/bin/pam-helper
+
+
+
 
 ENV RIDE_WD "/ride/work"
 RUN mkdir -p $RIDE_WD /ride/work
