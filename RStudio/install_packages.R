@@ -1,4 +1,3 @@
-install.packages("devtools",  repos="http://cran.rstudio.com/")
 
 source("/home/rstudio/installUtils.R")
 
@@ -16,7 +15,18 @@ p <- c(
 "R6" = "2.3.0",
 "Rcpp" = "1.0.0",
 "rlang" = "0.3.0.1",
-"shiny" = "1.2.0"
+"shiny" = "1.2.0",
+"evaluate" = "0.12",
+"highr" = "0.7",
+"markdown" ="0.9",
+"stringr" = "1.3.1",
+"yaml" = "2.2.0",
+"caTools" = "1.17.1.1",
+"bitops" = "1.0-6",
+"knitr" = "1.20",
+"base64enc" = "0.1-3",
+"rmarkdown" = "1.11"
+
 )
 
 installAll(p)

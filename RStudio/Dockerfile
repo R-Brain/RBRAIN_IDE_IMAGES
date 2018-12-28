@@ -99,6 +99,7 @@ RUN cd /tmp && \
 
 
 
+RUN Rscript -e "install.packages('devtools',  repos='http://cran.rstudio.com/')"
 
 COPY install_packages.R /home/rstudio/install_packages.R 
 COPY installUtils.R /home/rstudio/installUtils.R

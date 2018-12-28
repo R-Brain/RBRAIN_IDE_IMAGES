@@ -38,18 +38,6 @@ checkInstalled <- function(packages){
 installAll <- function(packages) {
   for (name in names(packages)) {
     version = packages[name]
-    ip <- installed.packages()
-    found <- which(ip == name)
-    if (length(found) > 0) {
-      installedVersion <- ip[found[1], 3]
-      if (length(which(version == installedVersion)) > 0) {
-        report(paste0(length(which(version == installedVersion)), " Package ", name, "=", version, " already installed"))
-      } else {
-        warning(paste0(length(found), " Package ", name, "=", installedVersion, " already installed. Installing ",version))
-        doInstall(name, version)
-      }
-    } else {
-      doInstall(name, version)
+    doInstall(name, version)
     }
   }
-}
