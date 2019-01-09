@@ -1,2 +1,3 @@
-# RBRAIN_IDE_IMAGES
-A repo of Dockerfile for running IDEs in R-BRAIN DSP 
+# R-Brain IDE Images
+
+Here we provide examples of images built for running IDEs on R-Brain DSP platform. 
