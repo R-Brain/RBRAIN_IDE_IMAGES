@@ -11,9 +11,10 @@ for line in ${!RBRAIN_*}; do echo $line=${!line} >> /etc/environment; done;
 # any variable stats with IEV_
 for line in ${!IEV_*}; do echo $line=${!line} >> /etc/environment; done;
 
+cp /etc/environment /home/rstudio/.Renviron
+
 for line in $( cat /etc/environment ) ; do export $line ; done
 
 /etc/init.d/nginx start
 sleep 1s
-
 
