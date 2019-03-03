@@ -19,11 +19,14 @@ COPY start.sh /usr/local/bin/
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY supervisord_shiny.conf /etc/supervisor/conf.d/supervisord_shiny.conf
 
-
 RUN sudo mkdir -p $RIDE_WD /ride/libraries \
   && sudo chown -R $NB_USER:users /ride 
 
 RUN sudo echo "$NB_USER ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+# Change default settings of R
+COPY Rprofile $HOME/.Rprofile
+RUN  sudo chown -R $NB_USER:users $HOME/.Rprofile
 
 USER $NB_USER
 

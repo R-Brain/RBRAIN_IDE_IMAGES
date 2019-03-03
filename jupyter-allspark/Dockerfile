@@ -25,6 +25,10 @@ RUN sudo mkdir -p $RIDE_WD /ride/libraries \
 
 RUN sudo echo "$NB_USER ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
+# Change default settings of R
+COPY Rprofile $HOME/.Rprofile
+RUN  sudo chown -R $NB_USER:users $HOME/.Rprofile
+
 USER $NB_USER
 
 RUN mkdir -p $HOME/ride $HOME/supervisor $HOME/logs/supervisor
