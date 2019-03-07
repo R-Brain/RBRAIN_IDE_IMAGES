@@ -45,6 +45,10 @@ RUN cd /opt/conda/lib/python3.6/site-packages && \
         jupyter-kernelspec install sparkmagic/kernels/sparkrkernel --user $NB_USER  && \
         jupyter serverextension enable --py sparkmagic
 
+# Sparkmagic config file
+RUN mkdir -p $HOME/.sparkmagic
+COPY config.json $HOME/.sparkmagic/config.json
+
 ENV PYTHONUSERBASE "/ride/libraries/py"
 ENV PATH="${PYTHONUSERBASE}/bin:${PATH}"
 ENV CONDA_ENVS_PATH="/ride/libraries/conda/envs:/opt/conda/envs"
