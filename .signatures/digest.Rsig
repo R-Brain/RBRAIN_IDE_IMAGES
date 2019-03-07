@@ -1,0 +1,309 @@
+package "digest" "0.6.15" {
+	var ".__NAMESPACE__."
+	var ".__S3MethodsTable__."
+	function ".getSerializeVersion"()
+	function ".onLoad"("libname", "pkgname")
+	function ".onUnload"("libpath")
+	var ".packageName"
+	var ".pkgenv"
+	/**
+	 * 
+	 *This creates an object that can perform the Advanced Encryption 
+	 *Standard (AES) block cipher.
+	 *
+	 */
+	exported function "AES"("key", "mode"="c(\"ECB\", \"CBC\", \"CTR\")", "IV"="")
+	var "AESdecryptECB"
+	var "AESencryptECB"
+	var "AESinit"
+	function "attr_sha1"("x", "digits", "zapsmall", "algo", "...")
+	/**
+	 * 
+	 * The \code{digest} function applies a cryptographical hash function to
+	 * arbitrary R objects. By default, the objects are internally
+	 * serialized, and either one of the currently implemented MD5 and SHA-1
+	 * hash functions algorithms can be used to compute a compact digest of
+	 * the serialized object.
+	 *
+	 * In order to compare this implementation with others, serialization of
+	 * the input argument can also be turned off in which the input argument
+	 * must be a character string for which its digest is returned.
+	 *
+	 */
+	exported function "digest"("object", "algo"="c(\"md5\", \"sha1\", \"crc32\", \"sha256\", \"sha512\", \"xxhash32\", \"xxhash64\",     \"murmur32\")", "serialize"="TRUE", "file"="FALSE", "length"="Inf", "skip"="auto", "ascii"="FALSE", "raw"="FALSE", "seed"="0", "errormode"="c(\"stop\", \"warn\", \"silent\")", "serializeVersion"=".getSerializeVersion()")
+	var "digest_impl"
+	/**
+	 * 
+	 * The \code{hmac} function calculates a message authentication code
+	 * (MAC) involving the specified cryptographic hash function in
+	 * combination with a given secret key.
+	 *
+	 */
+	exported function "hmac"("key", "object", "algo"="c(\"md5\", \"sha1\", \"crc32\", \"sha256\", \"sha512\")", "serialize"="FALSE", "raw"="FALSE", "...")
+	/**
+	 * 
+	 * A helper function used to create \code{raw} methods.
+	 *
+	 */
+	exported function "makeRaw"("object")
+	/**
+	 * 
+	 * A helper function used to create \code{raw} methods.
+	 *
+	 */
+	function "makeRaw.character"("object")
+	/**
+	 * 
+	 * A helper function used to create \code{raw} methods.
+	 *
+	 */
+	function "makeRaw.default"("object")
+	/**
+	 * 
+	 * A helper function used to create \code{raw} methods.
+	 *
+	 */
+	function "makeRaw.digest"("object")
+	/**
+	 * 
+	 * A helper function used to create \code{raw} methods.
+	 *
+	 */
+	function "makeRaw.raw"("object")
+	var "modes"
+	function "num2hex"("x", "digits"="14", "zapsmall"="7")
+	function "padWithZeros"("k", "algo")
+	function "print.AES"("x", "...")
+	/**
+	 * 
+	 *Calculate a SHA1 hash of an object. The main difference with
+	 *\code{digest(x, algo = "sha1")} is that \code{sha1()} will give the same hash on
+	 *32-bit and 64-bit systems. Note that the results depends on the setting of
+	 *\code{digits} and \code{zapsmall} when handling floating point numbers. The
+	 *current defaults keep \code{digits} and \code{zapsmall} as large as possible
+	 *while maintaining the same hash on 32 bit and 64 bit systems.
+	 *
+	 */
+	exported function "sha1"("x", "digits"="14", "zapsmall"="7", "...", "algo"="sha1")
+	/**
+	 * 
+	 *Calculate a SHA1 hash of an object. The main difference with
+	 *\code{digest(x, algo = "sha1")} is that \code{sha1()} will give the same hash on
+	 *32-bit and 64-bit systems. Note that the results depends on the setting of
+	 *\code{digits} and \code{zapsmall} when handling floating point numbers. The
+	 *current defaults keep \code{digits} and \code{zapsmall} as large as possible
+	 *while maintaining the same hash on 32 bit and 64 bit systems.
+	 *
+	 */
+	function "sha1.anova"("x", "digits"="4", "zapsmall"="7", "...", "algo"="sha1")
+	/**
+	 * 
+	 *Calculate a SHA1 hash of an object. The main difference with
+	 *\code{digest(x, algo = "sha1")} is that \code{sha1()} will give the same hash on
+	 *32-bit and 64-bit systems. Note that the results depends on the setting of
+	 *\code{digits} and \code{zapsmall} when handling floating point numbers. The
+	 *current defaults keep \code{digits} and \code{zapsmall} as large as possible
+	 *while maintaining the same hash on 32 bit and 64 bit systems.
+	 *
+	 */
+	function "sha1.array"("x", "digits"="14", "zapsmall"="7", "...", "algo"="sha1")
+	/**
+	 * 
+	 *Calculate a SHA1 hash of an object. The main difference with
+	 *\code{digest(x, algo = "sha1")} is that \code{sha1()} will give the same hash on
+	 *32-bit and 64-bit systems. Note that the results depends on the setting of
+	 *\code{digits} and \code{zapsmall} when handling floating point numbers. The
+	 *current defaults keep \code{digits} and \code{zapsmall} as large as possible
+	 *while maintaining the same hash on 32 bit and 64 bit systems.
+	 *
+	 */
+	function "sha1.call"("x", "digits"="14", "zapsmall"="7", "...", "algo"="sha1")
+	/**
+	 * 
+	 *Calculate a SHA1 hash of an object. The main difference with
+	 *\code{digest(x, algo = "sha1")} is that \code{sha1()} will give the same hash on
+	 *32-bit and 64-bit systems. Note that the results depends on the setting of
+	 *\code{digits} and \code{zapsmall} when handling floating point numbers. The
+	 *current defaults keep \code{digits} and \code{zapsmall} as large as possible
+	 *while maintaining the same hash on 32 bit and 64 bit systems.
+	 *
+	 */
+	function "sha1.character"("x", "digits"="14", "zapsmall"="7", "...", "algo"="sha1")
+	/**
+	 * 
+	 *Calculate a SHA1 hash of an object. The main difference with
+	 *\code{digest(x, algo = "sha1")} is that \code{sha1()} will give the same hash on
+	 *32-bit and 64-bit systems. Note that the results depends on the setting of
+	 *\code{digits} and \code{zapsmall} when handling floating point numbers. The
+	 *current defaults keep \code{digits} and \code{zapsmall} as large as possible
+	 *while maintaining the same hash on 32 bit and 64 bit systems.
+	 *
+	 */
+	function "sha1.complex"("x", "digits"="14", "zapsmall"="7", "...", "algo"="sha1")
+	/**
+	 * 
+	 *Calculate a SHA1 hash of an object. The main difference with
+	 *\code{digest(x, algo = "sha1")} is that \code{sha1()} will give the same hash on
+	 *32-bit and 64-bit systems. Note that the results depends on the setting of
+	 *\code{digits} and \code{zapsmall} when handling floating point numbers. The
+	 *current defaults keep \code{digits} and \code{zapsmall} as large as possible
+	 *while maintaining the same hash on 32 bit and 64 bit systems.
+	 *
+	 */
+	function "sha1.data.frame"("x", "digits"="14", "zapsmall"="7", "...", "algo"="sha1")
+	/**
+	 * 
+	 *Calculate a SHA1 hash of an object. The main difference with
+	 *\code{digest(x, algo = "sha1")} is that \code{sha1()} will give the same hash on
+	 *32-bit and 64-bit systems. Note that the results depends on the setting of
+	 *\code{digits} and \code{zapsmall} when handling floating point numbers. The
+	 *current defaults keep \code{digits} and \code{zapsmall} as large as possible
+	 *while maintaining the same hash on 32 bit and 64 bit systems.
+	 *
+	 */
+	function "sha1.Date"("x", "digits"="14", "zapsmall"="7", "...", "algo"="sha1")
+	function "sha1.default"("x", "digits"="14", "zapsmall"="7", "...", "algo"="sha1")
+	/**
+	 * 
+	 *Calculate a SHA1 hash of an object. The main difference with
+	 *\code{digest(x, algo = "sha1")} is that \code{sha1()} will give the same hash on
+	 *32-bit and 64-bit systems. Note that the results depends on the setting of
+	 *\code{digits} and \code{zapsmall} when handling floating point numbers. The
+	 *current defaults keep \code{digits} and \code{zapsmall} as large as possible
+	 *while maintaining the same hash on 32 bit and 64 bit systems.
+	 *
+	 */
+	function "sha1.factor"("x", "digits"="14", "zapsmall"="7", "...", "algo"="sha1")
+	/**
+	 * 
+	 *Calculate a SHA1 hash of an object. The main difference with
+	 *\code{digest(x, algo = "sha1")} is that \code{sha1()} will give the same hash on
+	 *32-bit and 64-bit systems. Note that the results depends on the setting of
+	 *\code{digits} and \code{zapsmall} when handling floating point numbers. The
+	 *current defaults keep \code{digits} and \code{zapsmall} as large as possible
+	 *while maintaining the same hash on 32 bit and 64 bit systems.
+	 *
+	 */
+	function "sha1.function"("x", "digits"="14", "zapsmall"="7", "...", "algo"="sha1")
+	/**
+	 * 
+	 *Calculate a SHA1 hash of an object. The main difference with
+	 *\code{digest(x, algo = "sha1")} is that \code{sha1()} will give the same hash on
+	 *32-bit and 64-bit systems. Note that the results depends on the setting of
+	 *\code{digits} and \code{zapsmall} when handling floating point numbers. The
+	 *current defaults keep \code{digits} and \code{zapsmall} as large as possible
+	 *while maintaining the same hash on 32 bit and 64 bit systems.
+	 *
+	 */
+	function "sha1.integer"("x", "digits"="14", "zapsmall"="7", "...", "algo"="sha1")
+	/**
+	 * 
+	 *Calculate a SHA1 hash of an object. The main difference with
+	 *\code{digest(x, algo = "sha1")} is that \code{sha1()} will give the same hash on
+	 *32-bit and 64-bit systems. Note that the results depends on the setting of
+	 *\code{digits} and \code{zapsmall} when handling floating point numbers. The
+	 *current defaults keep \code{digits} and \code{zapsmall} as large as possible
+	 *while maintaining the same hash on 32 bit and 64 bit systems.
+	 *
+	 */
+	function "sha1.list"("x", "digits"="14", "zapsmall"="7", "...", "algo"="sha1")
+	/**
+	 * 
+	 *Calculate a SHA1 hash of an object. The main difference with
+	 *\code{digest(x, algo = "sha1")} is that \code{sha1()} will give the same hash on
+	 *32-bit and 64-bit systems. Note that the results depends on the setting of
+	 *\code{digits} and \code{zapsmall} when handling floating point numbers. The
+	 *current defaults keep \code{digits} and \code{zapsmall} as large as possible
+	 *while maintaining the same hash on 32 bit and 64 bit systems.
+	 *
+	 */
+	function "sha1.logical"("x", "digits"="14", "zapsmall"="7", "...", "algo"="sha1")
+	/**
+	 * 
+	 *Calculate a SHA1 hash of an object. The main difference with
+	 *\code{digest(x, algo = "sha1")} is that \code{sha1()} will give the same hash on
+	 *32-bit and 64-bit systems. Note that the results depends on the setting of
+	 *\code{digits} and \code{zapsmall} when handling floating point numbers. The
+	 *current defaults keep \code{digits} and \code{zapsmall} as large as possible
+	 *while maintaining the same hash on 32 bit and 64 bit systems.
+	 *
+	 */
+	function "sha1.matrix"("x", "digits"="14", "zapsmall"="7", "...", "algo"="sha1")
+	/**
+	 * 
+	 *Calculate a SHA1 hash of an object. The main difference with
+	 *\code{digest(x, algo = "sha1")} is that \code{sha1()} will give the same hash on
+	 *32-bit and 64-bit systems. Note that the results depends on the setting of
+	 *\code{digits} and \code{zapsmall} when handling floating point numbers. The
+	 *current defaults keep \code{digits} and \code{zapsmall} as large as possible
+	 *while maintaining the same hash on 32 bit and 64 bit systems.
+	 *
+	 */
+	function "sha1.name"("x", "digits"="14", "zapsmall"="7", "...", "algo"="sha1")
+	/**
+	 * 
+	 *Calculate a SHA1 hash of an object. The main difference with
+	 *\code{digest(x, algo = "sha1")} is that \code{sha1()} will give the same hash on
+	 *32-bit and 64-bit systems. Note that the results depends on the setting of
+	 *\code{digits} and \code{zapsmall} when handling floating point numbers. The
+	 *current defaults keep \code{digits} and \code{zapsmall} as large as possible
+	 *while maintaining the same hash on 32 bit and 64 bit systems.
+	 *
+	 */
+	function "sha1.NULL"("x", "digits"="14", "zapsmall"="7", "...", "algo"="sha1")
+	/**
+	 * 
+	 *Calculate a SHA1 hash of an object. The main difference with
+	 *\code{digest(x, algo = "sha1")} is that \code{sha1()} will give the same hash on
+	 *32-bit and 64-bit systems. Note that the results depends on the setting of
+	 *\code{digits} and \code{zapsmall} when handling floating point numbers. The
+	 *current defaults keep \code{digits} and \code{zapsmall} as large as possible
+	 *while maintaining the same hash on 32 bit and 64 bit systems.
+	 *
+	 */
+	function "sha1.numeric"("x", "digits"="14", "zapsmall"="7", "...", "algo"="sha1")
+	/**
+	 * 
+	 *Calculate a SHA1 hash of an object. The main difference with
+	 *\code{digest(x, algo = "sha1")} is that \code{sha1()} will give the same hash on
+	 *32-bit and 64-bit systems. Note that the results depends on the setting of
+	 *\code{digits} and \code{zapsmall} when handling floating point numbers. The
+	 *current defaults keep \code{digits} and \code{zapsmall} as large as possible
+	 *while maintaining the same hash on 32 bit and 64 bit systems.
+	 *
+	 */
+	function "sha1.pairlist"("x", "digits"="14", "zapsmall"="7", "...", "algo"="sha1")
+	/**
+	 * 
+	 *Calculate a SHA1 hash of an object. The main difference with
+	 *\code{digest(x, algo = "sha1")} is that \code{sha1()} will give the same hash on
+	 *32-bit and 64-bit systems. Note that the results depends on the setting of
+	 *\code{digits} and \code{zapsmall} when handling floating point numbers. The
+	 *current defaults keep \code{digits} and \code{zapsmall} as large as possible
+	 *while maintaining the same hash on 32 bit and 64 bit systems.
+	 *
+	 */
+	function "sha1.POSIXct"("x", "digits"="14", "zapsmall"="7", "...", "algo"="sha1")
+	/**
+	 * 
+	 *Calculate a SHA1 hash of an object. The main difference with
+	 *\code{digest(x, algo = "sha1")} is that \code{sha1()} will give the same hash on
+	 *32-bit and 64-bit systems. Note that the results depends on the setting of
+	 *\code{digits} and \code{zapsmall} when handling floating point numbers. The
+	 *current defaults keep \code{digits} and \code{zapsmall} as large as possible
+	 *while maintaining the same hash on 32 bit and 64 bit systems.
+	 *
+	 */
+	function "sha1.POSIXlt"("x", "digits"="14", "zapsmall"="7", "...", "algo"="sha1")
+	/**
+	 * 
+	 *Calculate a SHA1 hash of an object. The main difference with
+	 *\code{digest(x, algo = "sha1")} is that \code{sha1()} will give the same hash on
+	 *32-bit and 64-bit systems. Note that the results depends on the setting of
+	 *\code{digits} and \code{zapsmall} when handling floating point numbers. The
+	 *current defaults keep \code{digits} and \code{zapsmall} as large as possible
+	 *while maintaining the same hash on 32 bit and 64 bit systems.
+	 *
+	 */
+	function "sha1.raw"("x", "digits"="14", "zapsmall"="7", "...", "algo"="sha1")
+}

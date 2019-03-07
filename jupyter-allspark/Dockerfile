@@ -35,6 +35,16 @@ RUN mkdir -p $HOME/ride $HOME/supervisor $HOME/logs/supervisor
 VOLUME $RIDE_WD /ride/libraries
 WORKDIR $RIDE_WD
 
+# sparkmagic 
+
+RUN  pip --isolated --no-cache-dir install sparkmagic
+RUN cd /opt/conda/lib/python3.6/site-packages && \
+        jupyter-kernelspec install sparkmagic/kernels/sparkkernel --user $NB_USER && \
+        jupyter-kernelspec install sparkmagic/kernels/pysparkkernel --user $NB_USER  && \
+        jupyter-kernelspec install sparkmagic/kernels/pyspark3kernel --user $NB_USER  && \
+        jupyter-kernelspec install sparkmagic/kernels/sparkrkernel --user $NB_USER  && \
+        jupyter serverextension enable --py sparkmagic
+
 ENV PYTHONUSERBASE "/ride/libraries/py"
 ENV PATH="${PYTHONUSERBASE}/bin:${PATH}"
 ENV CONDA_ENVS_PATH="/ride/libraries/conda/envs:/opt/conda/envs"

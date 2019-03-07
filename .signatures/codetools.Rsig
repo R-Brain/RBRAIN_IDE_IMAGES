@@ -1,0 +1,216 @@
+package "codetools" "0.2.14" {
+	var ".__NAMESPACE__."
+	var ".__S3MethodsTable__."
+	var ".BaseEnv"
+	var ".EmptyEnv"
+	var ".packageName"
+	function "addCollectUsageHandler"("v", "where", "fun")
+	function "addLocalFunDef"("vn", "e", "w")
+	function "anyDots"("args")
+	function "anyMissing"("args")
+	function "apdef"("e")
+	function "checkCall"("def", "call", "signal")
+	function "checkDotsAssignVar"("v", "w")
+	function "checkPrimopCall"("fn", "e", "isBuiltin", "signal")
+	function "checkSymOrString"("e", "signal")
+	/**
+	 * 
+	 * Check R code for possible problems.
+	 *
+	 */
+	exported function "checkUsage"("fun", "name"="<anonymous>", "report", "all"="FALSE", "suppressLocal"="FALSE", "suppressParamAssigns"="!all", "suppressParamUnused"="!all", "suppressFundefMismatch"="FALSE", "suppressLocalUnused"="FALSE", "suppressNoLocalFun"="!all", "skipWith"="FALSE", "suppressUndefined", "suppressPartialMatchArgs"="TRUE")
+	function "checkUsageEnterGlobal"("type", "n", "e", "w")
+	function "checkUsageEnterLocal"("type", "n", "e", "w")
+	/**
+	 * 
+	 * Check R code for possible problems.
+	 *
+	 */
+	exported function "checkUsageEnv"("env", "...")
+	function "checkUsageFinishLocals"("w")
+	/**
+	 * 
+	 * Check R code for possible problems.
+	 *
+	 */
+	exported function "checkUsagePackage"("pack", "...")
+	function "checkUsageStartLocals"("parnames", "locals", "w")
+	/**
+	 * 
+	 * These functions provide some tools for analysing R code.  Mainly
+	 * indented to support the other tools in this package and byte code
+	 * compilation.
+	 *
+	 */
+	exported function "collectLocals"("e", "collect")
+	function "collectLocalsAssignHandler"("e", "w")
+	function "collectLocalsForHandler"("e", "w")
+	function "collectLocalsLocalHandler"("e", "w")
+	/**
+	 * 
+	 * These functions provide some tools for analysing R code.  Mainly
+	 * indented to support the other tools in this package and byte code
+	 * compilation.
+	 *
+	 */
+	exported function "collectUsage"("fun", "name"="<anonymous>", "...")
+	function "collectUsageArgs"("e", "w")
+	function "collectUsageCall"("e", "w")
+	function "collectUsageFun"("name", "formals", "body", "w")
+	var "collectUsageHandlers"
+	function "collectUsageIsLocal"("v", "w")
+	function "collectUsageLeaf"("v", "w")
+	/**
+	 * 
+	 * These functions provide some tools for analysing R code.  Mainly
+	 * indented to support the other tools in this package and byte code
+	 * compilation.
+	 *
+	 */
+	exported function "constantFold"("e", "env"="", "fail"="")
+	function "constantFoldEnv"("e", "env", "fail"="")
+	var "constNames"
+	var "dfltSuppressUndefined"
+	function "doNothing"("...")
+	function "dotsOrMissing"("args")
+	function "dropMissings"("x")
+	function "evalseq"("e")
+	function "exitFolder"("e", "w")
+	/**
+	 * 
+	 * These functions provide some tools for analysing R code.  Mainly
+	 * indented to support the other tools in this package and byte code
+	 * compilation.
+	 *
+	 */
+	exported function "findFuncLocals"("formals", "body")
+	/**
+	 * 
+	 * Finds global functions and variables used by a closure.
+	 *
+	 */
+	exported function "findGlobals"("fun", "merge"="TRUE")
+	/**
+	 * 
+	 * These functions provide some tools for analysing R code.  Mainly
+	 * indented to support the other tools in this package and byte code
+	 * compilation.
+	 *
+	 */
+	exported function "findLocals"("e", "envir")
+	/**
+	 * 
+	 * These functions provide some tools for analysing R code.  Mainly
+	 * indented to support the other tools in this package and byte code
+	 * compilation.
+	 *
+	 */
+	exported function "findLocalsList"("elist", "envir")
+	function "findOwnerEnv"("v", "env", "stop"="NA", "default"="NA")
+	function "findVar"("e", "env")
+	/**
+	 * 
+	 * These functions provide some tools for analysing R code.  Mainly
+	 * indented to support the other tools in this package and byte code
+	 * compilation.
+	 *
+	 */
+	exported function "flattenAssignment"("e")
+	function "foldCall"("e", "w")
+	var "foldFuns"
+	function "foldLeaf"("e", "w")
+	/**
+	 * 
+	 * These functions provide some tools for analysing R code.  Mainly
+	 * indented to support the other tools in this package and byte code
+	 * compilation.
+	 *
+	 */
+	exported function "getAssignedVar"("e")
+	function "getCollectLocalsHandler"("v", "w")
+	function "getCollectUsageHandler"("v", "w")
+	function "getLocalUsageEntry"("vn", "w")
+	function "getLocalUsageValue"("vn", "which", "w")
+	function "incLocalSrcInfo"("vn", "w")
+	function "incLocalUsageValue"("vn", "which", "w")
+	function "is.baseenv"("e")
+	function "is.emptyenv"("e")
+	function "isBaseVar"("v", "env")
+	function "isClosureFunDef"("e", "w")
+	/**
+	 * 
+	 * These functions provide some tools for analysing R code.  Mainly
+	 * indented to support the other tools in this package and byte code
+	 * compilation.
+	 *
+	 */
+	exported function "isConstantValue"("v", "w")
+	function "isDDSym"("name")
+	function "isFoldable"("v", "w")
+	function "isSimpleFunDef"("e", "w")
+	function "isStatsVar"("v", "env")
+	function "isUtilsVar"("v", "env")
+	function "makeAssgnFcn"("fun")
+	/**
+	 * 
+	 * These functions provide some tools for analysing R code.  Mainly
+	 * indented to support the other tools in this package and byte code
+	 * compilation.
+	 *
+	 */
+	exported function "makeCodeWalker"("...", "handler"="function(v, w) NULL", "call"="function(e, w) for (ee in as.list(e)) if (!missing(ee)) walkCode(ee,     w)", "leaf"="function(e, w) print(e)")
+	/**
+	 * 
+	 * These functions provide some tools for analysing R code.  Mainly
+	 * indented to support the other tools in this package and byte code
+	 * compilation.
+	 *
+	 */
+	exported function "makeConstantFolder"("...", "leaf", "handler"="function(v, w) if (w$foldable(v, w)) foldCall", "call"="function(e, w) exitFolder(e, w)", "exit"="function(e, w) stop0(paste(\"not a foldable expression:\", deparse(e,     width.cutoff = 500)))", "isLocal"="function(v, w) FALSE", "foldable", "isConstant", "signal"="function(e, msg, w) warning0(msg)")
+	/**
+	 * 
+	 * These functions provide some tools for analysing R code.  Mainly
+	 * indented to support the other tools in this package and byte code
+	 * compilation.
+	 *
+	 */
+	exported function "makeLocalsCollector"("...", "leaf"="function(e, w) character(0)", "handler", "isLocal"="function(v, w) FALSE", "exit"="function(e, msg, w) stop0(msg)", "collect"="function(v, e, w) print(v)")
+	/**
+	 * 
+	 * These functions provide some tools for analysing R code.  Mainly
+	 * indented to support the other tools in this package and byte code
+	 * compilation.
+	 *
+	 */
+	exported function "makeUsageCollector"("fun", "...", "name"="", "enterLocal", "enterGlobal", "enterInternal", "startCollectLocals", "finishCollectLocals", "warn", "signal")
+	function "matchCall"("def", "call", "...")
+	function "matchName"("name", "list")
+	function "mkHash"()
+	function "mkLinkHandler"("family", "okLinks")
+	var "noMissingAllowed"
+	function "pasteExpr"("e", "prefix"="
+    ")
+	var "primopArgCounts"
+	function "setLocalUsageValue"("vn", "which", "value", "w")
+	/**
+	 * 
+	 * Prints a Lisp-style representation of R expression.  This can be
+	 * useful for understanding how some things are parsed.
+	 *
+	 */
+	exported function "showTree"("e", "write")
+	function "showTreeCall"("e", "w")
+	function "showTreeLeaf"("e", "w")
+	function "signalUsageIssue"("m", "w")
+	function "stop0"("msg")
+	function "suppressVar"("n", "suppress")
+	/**
+	 * 
+	 * These functions provide some tools for analysing R code.  Mainly
+	 * indented to support the other tools in this package and byte code
+	 * compilation.
+	 *
+	 */
+	exported function "walkCode"("e", "w"="makeCodeWalker()")
+	function "warning0"("msg")
+}
