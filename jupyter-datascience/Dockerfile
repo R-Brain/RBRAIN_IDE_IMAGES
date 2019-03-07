@@ -43,6 +43,9 @@ RUN conda install --quiet -y 'plotly=3.6.1' 'bokeh=0.13.0' 'flask=1.0.2' && \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
 
+# activate plotly rendering in Jlab
+RUN jupyter labextension install @jupyterlab/plotly-extension
+
 EXPOSE 8080
 
 COPY pydistutils.cfg $HOME/.pydistutils.cfg
