@@ -38,6 +38,11 @@ ENV PYTHONUSERBASE "/ride/libraries/py"
 ENV PATH="${PYTHONUSERBASE}/bin:${PATH}"
 ENV CONDA_ENVS_PATH="/ride/libraries/conda/envs:/opt/conda/envs"
 
+RUN conda install --quiet -y 'plotly=3.6.1' 'bokeh=0.13.0' 'flask=1.0.2' && \
+    conda clean -tipsy && \
+    fix-permissions $CONDA_DIR && \
+    fix-permissions /home/$NB_USER
+
 EXPOSE 8080
 
 COPY pydistutils.cfg $HOME/.pydistutils.cfg
