@@ -5,6 +5,8 @@
 set -e
 
 sudo mkdir -p /ride/libraries/r /ride/libraries/py/lib/python3.6/site-packages  /ride/libraries/conda /ride/libraries/conda/envs
+sudo chown -R jovyan:users /ride
+
 
 # Exec the specified command or fall back on bash
 if [ $# -eq 0 ]; then
