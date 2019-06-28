@@ -1,7 +1,7 @@
-FROM rocker/r-ver:3.5.2
+FROM rocker/r-ver:3.6.0
 
 ARG RSTUDIO_VERSION
-#ENV RSTUDIO_VERSION=${RSTUDIO_VERSION:0.1.463}
+
 ARG S6_VERSION
 ENV S6_VERSION=${S6_VERSION:-v1.21.7.0}
 ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=2
@@ -30,19 +30,29 @@ RUN apt-get update \
     sudo \
     wget \
     vim \
-    nginx \
-    supervisor \
+    nginx \ 
+    supervisor \ 
+    # For dragulaR package
+    libv8-3.14-dev \
+    libclang-dev \
+    libclang-3.8-dev \
+    libobjc-6-dev \
+    libclang1-3.8 \
+    libclang-common-3.8-dev \
+    libllvm3.8 \
+    libobjc4 \
+    libgc1c2 \
+    gdebi-core \ 
   && unlink /etc/nginx/sites-enabled/default \
   && wget -O libssl1.0.0.deb http://ftp.debian.org/debian/pool/main/o/openssl/libssl1.0.0_1.0.1t-1+deb8u8_amd64.deb \
   && dpkg -i libssl1.0.0.deb \
-  && rm libssl1.0.0.deb \
-  && RSTUDIO_LATEST=$(wget --no-check-certificate -qO- https://s3.amazonaws.com/rstudio-server/current.ver) \
-  && [ -z "$RSTUDIO_VERSION" ] && RSTUDIO_VERSION=$RSTUDIO_LATEST || true \
-  && wget -q http://download2.rstudio.org/rstudio-server-${RSTUDIO_VERSION}-amd64.deb \
-  && dpkg -i rstudio-server-${RSTUDIO_VERSION}-amd64.deb \
-  && rm rstudio-server-*-amd64.deb \
+  && rm libssl1.0.0.deb 
+RUN wget https://download2.rstudio.org/rstudio-server-1.1.463-amd64.deb \
+  && dpkg -i rstudio-server-1.1.463-amd64.deb \
+  && rm rstudio-server-*-amd64.deb 
+
   ## Symlink pandoc & standard pandoc templates for use system-wide
-  && ln -s /usr/lib/rstudio-server/bin/pandoc/pandoc /usr/local/bin \
+RUN ln -s /usr/lib/rstudio-server/bin/pandoc/pandoc /usr/local/bin \
   && ln -s /usr/lib/rstudio-server/bin/pandoc/pandoc-citeproc /usr/local/bin \
   && git clone https://github.com/jgm/pandoc-templates \
   && mkdir -p /opt/pandoc/templates \
