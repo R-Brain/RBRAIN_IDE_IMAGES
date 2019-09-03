@@ -13,6 +13,7 @@ ENV PATH=/usr/lib/rstudio-server/bin:$PATH
 ## Download and install RStudio server & dependencies
 ## Attempts to get detect latest version, otherwise falls back to version given in $VER
 ## Symlink pandoc, pandoc-citeproc so they are available system-wide
+
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     file \
@@ -144,9 +145,6 @@ COPY add_shiny.sh /etc/cont-init.d/add
 COPY disable_auth_rserver.conf /etc/rstudio/disable_auth_rserver.conf
 COPY pam-helper.sh /usr/lib/rstudio-server/bin/pam-helper
 
-
-
-
 ENV RIDE_WD "/ride/work"
 RUN mkdir -p $RIDE_WD /ride/work
 RUN mkdir -p $RIDE_WD /ride/libraries/r \
@@ -156,6 +154,12 @@ RUN mkdir -p $RIDE_WD /ride/libraries/r \
 VOLUME $RIDE_WD /ride/libraries
 WORKDIR $RIDE_WD
 
+RUN apt-get update \
+    && apt-get install  -y --no-install-recommends software-properties-common \
+    && apt-get update
+
+RUN apt-get update \
+    && apt-get install  -y --no-install-recommends build-essential libxml2-dev
 
 EXPOSE 8080
 
