@@ -155,11 +155,21 @@ VOLUME $RIDE_WD /ride/libraries
 WORKDIR $RIDE_WD
 
 RUN apt-get update \
-    && apt-get install  -y --no-install-recommends software-properties-common \
+    && apt-get install  -y --no-install-recommends software-properties-common openjdk-8-jdk openjdk-8-jre \
     && apt-get update
+
+RUN R CMD javareconf JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
 
 RUN apt-get update \
     && apt-get install  -y --no-install-recommends build-essential libxml2-dev
+
+# set Java_HOME - required to start a workspace agent.
+ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
+# set JAVA_CPPFLAGS - required to run R CMD javareconf
+ENV JAVA_CPPFLAGS -I$JAVA_HOME/include -I$JAVA_HOME/include/linux
+
+ENV PATH=$PATH:$JAVA_HOME/bin
+
 
 EXPOSE 8080
 
