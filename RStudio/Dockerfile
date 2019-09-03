@@ -35,6 +35,7 @@ RUN apt-get update \
     # For dragulaR package
     libv8-3.14-dev \
     libclang-dev \
+    libpng-dev \
     libclang-3.8-dev \
     libobjc-6-dev \
     libclang1-3.8 \
@@ -42,7 +43,10 @@ RUN apt-get update \
     libllvm3.8 \
     libobjc4 \
     libgc1c2 \
-    gdebi-core \ 
+    gdebi-core \
+    curl \ 
+    libxml2 \ 
+    libxml2-dev \
   && unlink /etc/nginx/sites-enabled/default \
   && wget -O libssl1.0.0.deb http://ftp.debian.org/debian/pool/main/o/openssl/libssl1.0.0_1.0.1t-1+deb8u8_amd64.deb \
   && dpkg -i libssl1.0.0.deb \
