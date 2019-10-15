@@ -3,7 +3,12 @@ mkdir -p /ride/libraries/r
 mkdir -p /ride/work/projects
 chown -R rstudio:rstudio /ride/libraries/r 
 chown -R rstudio:rstudio /ride/work/projects
-sed -i -e "s/sessionId/${RBRAIN_SESSION_ID}\/ride/g" /etc/nginx/nginx.conf
+
+if [ "$RBRAIN_SESSION_ID" == "" ]; then
+    cp /home/rstudio/nginx.conf.bk /etc/nginx/nginx.conf
+else
+    sed -i -e "s/sessionId/${RBRAIN_SESSION_ID}\/ride/g" /etc/nginx/nginx.conf
+fi
 
 echo "USERNAME=${USERNAME}" >> /etc/environment 
 #All RBRAIN Env variables
