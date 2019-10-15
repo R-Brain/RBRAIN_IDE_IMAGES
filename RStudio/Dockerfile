@@ -119,6 +119,8 @@ RUN Rscript -e "install.packages('devtools',  repos='http://cran.rstudio.com/')"
 COPY install_packages.R /home/rstudio/install_packages.R 
 COPY installUtils.R /home/rstudio/installUtils.R
 
+COPY nginx.conf.bk /home/rstudio/nginx.conf.bk
+
 RUN Rscript /home/rstudio/install_packages.R \
   && rm /home/rstudio/install_packages.R \
   && rm /home/rstudio/installUtils.R
